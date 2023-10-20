@@ -1,0 +1,23 @@
+{# templates/book/add.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Add a Book{% endblock %}
+
+{% block body %}
+    <h1>Edit a Book</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.ref) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.category) }}
+     {{ form_row(form.publicationDate) }}
+     {{ form_row(form.author) }}
+    
+    {# Ajouter le bouton "Save" #}
+    <button type="submit" class="btn btn-primary">Save</button>
+    
+    {{ form_end(form) }}
+
+    <a href="{{ path('list_books') }}">Back to list</a>
+{% endblock %}

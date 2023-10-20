@@ -1,0 +1,36 @@
+{% block body %}
+<h1>Liste des Livres</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Auteur Id</th>
+            <th>Titre</th>
+            <th>Category</th>
+           <th>Date de publication</th>
+            <th>Publie</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.ref }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.category }}</td>
+            <td>{{ book.publicationDate }}</td>
+            <td>{{ book.published }}</td>
+            <td>{{ book.author.username }}</td>
+             <td>
+           <a href="{{ path('app_book_update', {id: book.ref })  }}">
+              edit
+            </a>
+          <a href="{{ path( 'app_book_remove', {id: book.ref }) }}">
+            delete
+          </a> 
+        </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href ="{{path('app_book_add')}}">Add</a>
+{% endblock %}

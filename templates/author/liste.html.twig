@@ -1,26 +1,17 @@
-{% extends 'base.html.twig' %}
+<table>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+</tr>
+{% for author in authors %}
+<tr>
+<td>{{author.id}}</td>
+<td>{{author.username}}</td>
+<td>{{author.email}}</td>
+<td><a href="{{path('app_update_by_id',{'id':author.id})}}">Update</a></td>
+<td><a href="{{path('app_delete_by_id',{'id':author.id})}}">Delete</a></td>
 
-{% block title %}Liste des auteurs{% endblock %}
-{% block body %}
-    <h1>Liste des auteurs</h1>
- 
-    {% if authors is defined and authors|length > 0 %}
-        <ul style="list-style: none;padding: 0;display: flex;flex-wrap: wrap;justify-content: center;">
-            {% for author in authors %}
-                <li style=" margin: 20px;text-align: center;">
-                        <div style="display: flex;flex-direction: column;align-items: center;">
-                            <img style="max-width: 100px;max-height: 100px;border-radius: 50%;margin-bottom: 10px;" src="{{ asset(author.picture) }}" alt="{{ author.username }}">
-                            <p>{{ author.username | upper }}</p>
-                        </div>
-                         <a href="{{ path('author_details', {'id': author.id}) }}">Details
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-
-        <p>Nombre d'auteurs : {{ authors|length }}</p>
-        <p>Nombre total de livres : {{ sumOfBooks }}</p>
-    {% else %}
-        <p>Aucun auteur trouvé.</p>
-    {% endif %}
-{% endblock %}
+</tr>
+{% endfor %}
+</table>
